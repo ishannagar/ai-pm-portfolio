@@ -1,0 +1,34 @@
+Problem Statement
+Customer Success Managers lack proactive, data-driven signals to identify at-risk accounts before they churn. CSMs spend time manually reviewing usage data, support tickets, and engagement metrics across multiple tools, leading to missed warning signs and reactive outreach. We need an AI-powered system that surfaces churn risk and provides actionable recommendations to help CSMs prioritize and retain customers.
+------------------------------------------------------------
+Target Users
+- Customer Success Managers (CSMs)
+- CS team leads / directors
+- Account Executives managing expansion opportunities
+------------------------------------------------------------
+User Stories (3)
+- As a CSM, I want to see a ranked list of my accounts by churn risk each week, so that I can prioritize outreach to the most at-risk customers.
+- As a CSM, I want AI-generated recommendations for each at-risk account, so that I know what specific actions to take to improve retention.
+- As a CS lead, I want to track team performance on acting on AI recommendations, so that I can measure impact on churn reduction.
+------------------------------------------------------------
+Success Metrics
+- Reduction in churn rate for accounts where CSMs acted on AI recommendations vs. control group
+- % of high-risk accounts contacted within 48 hours of risk signal
+- CSM time spent on manual account reviews (should decrease by 30%+)
+- Accuracy of churn predictions (precision/recall at 30/60/90 day windows)
+- CSM adoption rate: % of recommendations acted upon
+------------------------------------------------------------
+Technical Considerations
+- Train ML model on historical churn data: usage patterns, support tickets, NPS, contract value, engagement scores
+- Build feature pipeline aggregating data from product analytics, CRM, support system, billing
+- Implement recommendation engine with templated action types (outreach, QBR, training, feature enablement)
+- Design real-time risk scoring API with daily batch updates and webhook triggers for score changes
+- Add explainability layer showing which features contributed to risk score
+- Ensure data privacy compliance and customer data handling policies
+------------------------------------------------------------
+Risks
+- Model bias or inaccurate predictions erode CSM trust; mitigate with transparent confidence scores and feedback loops to retrain.
+- Data quality issues from incomplete integrations; mitigate with data validation checks and phased rollout by customer segment.
+- CSMs overwhelmed by false positives; mitigate with tunable risk thresholds and limiting alerts to top 10% of portfolio.
+- Privacy concerns with AI analyzing customer behavior; mitigate with clear documentation on data usage and opt-out mechanisms for sensitive accounts.
+- Over-reliance on AI reduces human judgment; mitigate with positioning AI as a copilot, not autopilot, and requiring CSM review before action.
