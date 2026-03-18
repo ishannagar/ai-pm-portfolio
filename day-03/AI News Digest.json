@@ -1,0 +1,221 @@
+{
+  "name": "AI News Digest",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f346d813-768d-41eb-8999-5df93bf48cf2",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/TechCrunch/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f10ae682-c4e8-4206-bf45-3160b6270ce9",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-sonnet-4-6",
+          "mode": "list",
+          "cachedResultName": "claude-sonnet-4-6"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an AI news summariser for a senior Product Manager.\n\nSummarise this article in exactly 3 bullet points:\n- What happened\n- Why it matters for AI/product managers\n- Key takeaway\n\nArticle title: {{$json.title}}\nArticle content: {{$json.contentSnippet}}\n\nKeep each bullet point to 1 sentence. Be concise and insightful."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        832,
+        0
+      ],
+      "id": "9a68965f-9274-46f8-b1dc-e361b0b5502c",
+      "name": "Message a model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "yG926U3hV6E62WfP",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "3279db36ebd28009b1efe75c91d92ca6",
+          "mode": "id"
+        },
+        "title": "={{$('RSS Read').item.json.title}}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Summary|rich_text",
+              "textContent": "={{$('Message a model').item.json.content[0].text}}"
+            },
+            {
+              "key": "Source|url",
+              "urlValue": "={{$('RSS Read').item.json.link}}"
+            },
+            {
+              "key": "Date|date",
+              "date": "={{$('RSS Read').item.json.pubDate}}"
+            },
+            {
+              "key": "Category|rich_text",
+              "textContent": "AI/PM News"
+            }
+          ]
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "heading_3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1184,
+        0
+      ],
+      "id": "37200113-1db2-4f34-9bd1-c45e5d23b3a4",
+      "name": "Create a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "MGBjGKR8dHXGSRP8",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "maxItems": 5
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "f3a478e2-32bf-49b2-9f29-22d2b140fbf7",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "operation": "removeItemsSeenInPreviousExecutions",
+        "dedupeValue": "={{$json.link}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "041c07ca-ffde-4302-8ebb-722611a8ee32",
+      "name": "Remove Duplicates"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Create a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "d85a8a9e-22d5-4631-92f2-dcca7a0c2d88",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9dbd0d9e1e375a8bcb3c9b914628354595518d23bdfdabdc6263854a044b5888"
+  },
+  "id": "0Z9TNwZ57jhgfKia",
+  "tags": []
+}
