@@ -48,7 +48,6 @@ def build_system_prompt() -> str:
     Create the detailed system instruction that defines the PM persona and output constraints.
     """
 
-    # We keep the system prompt as a single string so it can be passed directly to Claude.
     return textwrap.dedent(
         """
         You are a senior Product Manager at a B2B SaaS company. You write clear, structured PRDs that engineering teams love.
@@ -77,7 +76,7 @@ def build_few_shot_messages() -> List[Dict[str, str]]:
     Provide a few-shot example that demonstrates the EXACT PRD format we want Claude to follow.
     """
 
-    # We include one example pair (user request -> assistant PRD) as a template.
+    #  Example (user request -> assistant PRD) as a template.
     example_user = (
         "Feature idea: Add SSO (SAML) for enterprise customers so they can centrally manage access."
     )
@@ -182,10 +181,10 @@ def main() -> None:
     CLI entry point: reads input, calls Claude, prints PRD, and saves it to disk.
     """
 
-    # Ask the user for the feature idea directly in the terminal.
+    # Ask the user for the feature idea 
     feature_idea = input("Enter a feature idea to generate a PRD for: ").strip()
 
-    # Guard against empty input so we don't generate meaningless output files.
+    # Guard against empty input
     if not feature_idea:
         print("No feature idea provided. Exiting.")
         return
@@ -211,16 +210,16 @@ def main() -> None:
         ],
     )
 
-    # Extract the text from the first content block of the response.
+    # Extract the text
     prd_text = response.content[0].text
 
-    # Parse the output into sections (so we can print with clean separators).
+    # Parse the output into sections 
     sections = parse_prd_sections(prd_text)
 
-    # Format the PRD for clear terminal display.
+    # Format the PRD 
     formatted = format_prd_for_print(sections)
 
-    # Print a visual header so the user can immediately see where the PRD begins.
+    # Print a visual header 
     print("\n" + "=" * 60)
     print("GENERATED PRD")
     print("=" * 60 + "\n")
@@ -231,17 +230,17 @@ def main() -> None:
     # Create the output folder if it doesn't exist.
     os.makedirs("output", exist_ok=True)
 
-    # Generate a safe filename from the user's feature idea.
+    # Generate a fileame
     feature_name = slugify_feature_name(feature_idea)
 
-    # Build the output file path using the required naming scheme.
+    # Build the output file path 
     output_path = os.path.join("output", f"{feature_name}.txt")
 
-    # Save the PRD to disk so the user can reuse it later.
+    # Save the PRD to local
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(formatted)
 
-    # Confirm where the PRD was saved.
+    # Share the location of PRD
     print(f"\nSaved PRD to: {output_path}")
 
 
