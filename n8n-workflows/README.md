@@ -7,6 +7,10 @@ and saves them to Notion — completely hands-free.
 
 ## Workflow 1 — AI News Digest (Daily)
 
+## Workflow Architecture
+
+![AI News Digest Workflow](./ai-news-digest-workflow.png)
+
 ### How it works
 ```
 Schedule Trigger (9am daily)
