@@ -3,7 +3,8 @@
 > RBI-compliant home loan analysis in seconds.  
 > Upload a loan application PDF — get a full underwriting decision instantly.
 
-![AI Loan Underwriting Assistant](ss1.png)
+![AI Loan Underwriting Assistant](sss1.png)
+---
 ![AI Loan Underwriting Assistantt](sss2.png)
 ---
 
