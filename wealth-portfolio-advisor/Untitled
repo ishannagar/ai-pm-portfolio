@@ -1,0 +1,32 @@
+Write a Streamlit web app called app.py for a "Wealth Portfolio Advisor" that:
+
+UI:
+
+Title: "📈 Wealth Portfolio Advisor"
+Subtitle: "AI-powered portfolio analysis"
+Sidebar: text area where user enters portfolio as CSV format: TICKER,SHARES like "RELIANCE.NS,50" one per line. Add a default example with 5 Indian stocks (RELIANCE.NS, TCS.NS, INFY.NS, HDFCBANK.NS, WIPRO.NS)
+"Analyse Portfolio" button
+
+
+When button clicked:
+
+Parse the portfolio input
+Use yfinance to fetch: current price, 3-month history, company name, sector for each ticker
+Calculate: current value per stock, total portfolio value, % allocation per stock, 3-month return % per stock
+Show 3 metrics at top: Total Portfolio Value, Best Performer, Worst Performer
+Show plotly pie chart: portfolio allocation by stock
+Show plotly line chart: 3-month price performance for all stocks (normalised to 100)
+Show a holdings table: ticker, company, shares, current price, current value, 3-month return %
+
+
+AI Analysis section:
+
+Send portfolio data to Claude (claude-sonnet-4-5, max_tokens=1000)
+System prompt: "You are a senior Indian wealth advisor. Analyse this portfolio and give practical advice."
+Ask Claude to provide: portfolio health summary, concentration risks, top recommendation, one rebalancing suggestion, market context
+Display Claude's analysis in a clean info box
+
+
+Handle errors gracefully (invalid tickers, network issues)
+Use st.session_state to cache results
+Add clear comments
