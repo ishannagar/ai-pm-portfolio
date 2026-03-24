@@ -1,0 +1,77 @@
+[
+  {
+    "id": "TKT-1001",
+    "title": "Salesforce API Authentication Failure - Invalid Session Token",
+    "error_code": "INVALID_SESSION_ID",
+    "system": "Salesforce",
+    "error_message": "The session ID or OAuth token used has expired or is invalid.",
+    "root_cause": "OAuth token expired after 2 hours due to session timeout policy configuration.",
+    "resolution_steps": [
+      "Refresh OAuth token using the refresh token grant type",
+      "Update connection credentials in integration middleware with new session ID",
+      "Verify session timeout settings in Salesforce Security Controls"
+    ],
+    "severity": "high",
+    "resolved": false
+  },
+  {
+    "id": "TKT-1002",
+    "title": "HubSpot API Authentication Failure - Invalid Access Token",
+    "error_code": "HUBS-AUTH-401",
+    "system": "HubSpot",
+    "error_message": "Authentication failed: Access token expired or invalid, unable to sync contact data.",
+    "root_cause": "OAuth refresh token expired due to 6-month inactivity period exceeding HubSpot's token lifecycle.",
+    "resolution_steps": [
+      "Regenerate OAuth access token through HubSpot developer portal and update integration credentials",
+      "Verify API key scopes include contacts read/write permissions and re-authorize application",
+      "Implement automated token refresh mechanism to prevent future expiration issues"
+    ],
+    "severity": "high",
+    "resolved": false
+  },
+  {
+    "id": "TKT-1003",
+    "title": "SAP RFC Connection Timeout During Invoice Data Extraction",
+    "error_code": "RFC_ERROR_COMMUNICATION",
+    "system": "SAP",
+    "error_message": "RFC connection to SAP system timed out after 60 seconds during BAPI_INVOICE_GETLIST execution.",
+    "root_cause": "Network latency increased due to firewall rule changes blocking SAP gateway port 3300.",
+    "resolution_steps": [
+      "Verify firewall rules allow traffic on SAP gateway port 3300",
+      "Increase RFC timeout parameter to 120 seconds in connection settings",
+      "Test connection using SAP GUI and validate BAPI response time"
+    ],
+    "severity": "high",
+    "resolved": false
+  },
+  {
+    "id": "TKT-1004",
+    "title": "ServiceNow REST API Authentication Failure",
+    "error_code": "SNOW-AUTH-401",
+    "system": "ServiceNow",
+    "error_message": "Authentication failed with 401 Unauthorized when attempting to connect to ServiceNow REST API endpoint.",
+    "root_cause": "OAuth token expired and refresh token was not properly configured in integration credentials.",
+    "resolution_steps": [
+      "Regenerate OAuth credentials in ServiceNow Application Registry and update integration configuration",
+      "Verify refresh token mechanism is enabled and token rotation schedule is configured properly",
+      "Test connection with new credentials and monitor authentication logs for 24 hours"
+    ],
+    "severity": "high",
+    "resolved": false
+  },
+  {
+    "id": "TKT-1005",
+    "title": "Salesforce API Authentication Failure - OAuth Token Expired",
+    "error_code": "SFDC_AUTH_401",
+    "system": "Salesforce",
+    "error_message": "Authentication failed with error code 401. OAuth access token has expired and refresh failed.",
+    "root_cause": "OAuth refresh token invalidated due to password reset. Connected app session policy requires re-authentication.",
+    "resolution_steps": [
+      "Revoke existing OAuth tokens and re-authenticate the connected app with valid credentials",
+      "Update connected app session timeout policies to 12 hours in Salesforce setup",
+      "Implement automated token refresh mechanism with proper error handling and retry logic"
+    ],
+    "severity": "high",
+    "resolved": false
+  }
+]

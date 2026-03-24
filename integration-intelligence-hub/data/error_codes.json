@@ -1,0 +1,52 @@
+[
+  {
+    "code": "SFDC_AUTH_401",
+    "system": "Salesforce",
+    "description": "Authentication failed due to invalid credentials or expired session token.",
+    "common_causes": [
+      "Invalid username, password, or security token",
+      "Session timeout or OAuth token expiration"
+    ],
+    "resolution": "Verify credentials, refresh OAuth token, or reset security token and update integration configuration."
+  },
+  {
+    "code": "HUBS_RATE_LIMIT_429",
+    "system": "HubSpot",
+    "description": "API request rate limit exceeded for the current time window.",
+    "common_causes": [
+      "Too many API calls made within short time period",
+      "Concurrent requests exceeding account tier limits"
+    ],
+    "resolution": "Implement exponential backoff retry logic and reduce request frequency to stay within rate limits."
+  },
+  {
+    "code": "SAP_RFC_COMMUNICATION_FAILURE",
+    "system": "SAP",
+    "description": "RFC connection failed due to network or configuration issues",
+    "common_causes": [
+      "Network connectivity issues between systems",
+      "Incorrect RFC destination configuration or credentials"
+    ],
+    "resolution": "Verify network connectivity, check RFC destination settings, and validate user credentials in SM59."
+  },
+  {
+    "code": "SNOW_AUTH_401",
+    "system": "ServiceNow",
+    "description": "Authentication failed due to invalid credentials or expired session token.",
+    "common_causes": [
+      "Invalid username or password provided",
+      "Session token expired or revoked"
+    ],
+    "resolution": "Verify credentials are correct and regenerate authentication token if using OAuth or API key."
+  },
+  {
+    "code": "SFDC_AUTH_401",
+    "system": "Salesforce",
+    "description": "Authentication failed due to invalid credentials or expired session token.",
+    "common_causes": [
+      "Invalid username, password, or security token",
+      "Expired or revoked OAuth access token"
+    ],
+    "resolution": "Verify credentials, regenerate security token, or refresh OAuth token and retry authentication."
+  }
+]
