@@ -4,7 +4,6 @@
 > Upload a loan application PDF — get a full underwriting decision instantly.
 
 ![AI Loan Underwriting Assistant](ss1.png)
-![AI Loan Underwriting Assistantt](ss2.png)
 ---
 
 ## The Problem
