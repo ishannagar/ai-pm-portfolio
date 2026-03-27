@@ -1,0 +1,52 @@
+[
+  {
+    "account_id": "ACC-1001",
+    "active_users_trend": "growing",
+    "nps_score": 9,
+    "open_tickets": 1,
+    "days_since_csm_contact": 5,
+    "days_to_renewal": 247,
+    "last_login_days_ago": 0,
+    "sentiment": "positive"
+  },
+  {
+    "account_id": "ACC-1002",
+    "active_users_trend": "growing",
+    "nps_score": 10,
+    "open_tickets": 0,
+    "days_since_csm_contact": 3,
+    "days_to_renewal": 156,
+    "last_login_days_ago": 0,
+    "sentiment": "positive"
+  },
+  {
+    "account_id": "ACC-1003",
+    "active_users_trend": "stable",
+    "nps_score": 7,
+    "open_tickets": 4,
+    "days_since_csm_contact": 28,
+    "days_to_renewal": 89,
+    "last_login_days_ago": 2,
+    "sentiment": "neutral"
+  },
+  {
+    "account_id": "ACC-1004",
+    "active_users_trend": "declining",
+    "nps_score": 3,
+    "open_tickets": 8,
+    "days_since_csm_contact": 67,
+    "days_to_renewal": 45,
+    "last_login_days_ago": 12,
+    "sentiment": "at-risk"
+  },
+  {
+    "account_id": "ACC-1005",
+    "active_users_trend": "declining",
+    "nps_score": 2,
+    "open_tickets": 11,
+    "days_since_csm_contact": 93,
+    "days_to_renewal": 31,
+    "last_login_days_ago": 18,
+    "sentiment": "negative"
+  }
+]

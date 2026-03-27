@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ACC-1001",
+    "company_name": "Stellar Financial Group",
+    "industry": "Financial Services",
+    "arr": 485000,
+    "csm_name": "Sarah Chen",
+    "health_score": 9,
+    "renewal_date": "2025-03-15",
+    "num_users": 1250,
+    "plan": "Enterprise Plus"
+  },
+  {
+    "id": "ACC-1002",
+    "company_name": "GlobalTech Manufacturing",
+    "industry": "Manufacturing",
+    "arr": 720000,
+    "csm_name": "Michael Rodriguez",
+    "health_score": 8,
+    "renewal_date": "2025-06-22",
+    "num_users": 2100,
+    "plan": "Enterprise"
+  },
+  {
+    "id": "ACC-1003",
+    "company_name": "HealthCore Systems",
+    "industry": "Healthcare",
+    "arr": 340000,
+    "csm_name": "Jennifer Walsh",
+    "health_score": 5,
+    "renewal_date": "2025-04-10",
+    "num_users": 850,
+    "plan": "Enterprise"
+  },
+  {
+    "id": "ACC-1004",
+    "company_name": "RetailX Corporation",
+    "industry": "Retail",
+    "arr": 275000,
+    "csm_name": "David Kim",
+    "health_score": 3,
+    "renewal_date": "2025-02-28",
+    "num_users": 620,
+    "plan": "Professional"
+  },
+  {
+    "id": "ACC-1005",
+    "company_name": "Summit Logistics Partners",
+    "industry": "Transportation & Logistics",
+    "arr": 195000,
+    "csm_name": "Amanda Foster",
+    "health_score": 2,
+    "renewal_date": "2025-01-31",
+    "num_users": 380,
+    "plan": "Professional"
+  }
+]
